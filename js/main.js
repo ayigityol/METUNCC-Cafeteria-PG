@@ -1,41 +1,13 @@
 //parse initialize
-//not commited 
+Parse.initialize("pasekey", "parsekey");
 
 var menuObj = {};
 var menuObj2 ={};
-
+if(!localStorage["ncc-cafeteria-first"]){
+ localStorage["ncc-cafeteria-first"] = true;
+ }
 
 function closestMenu(flag){
-	/*var yemekObj = Parse.Object.extend("Yemekler"); // Parse Object of database.
-	
-	var query = new Parse.Query(yemekObj); //query of database
-	
-	query.equalTo("Gun",closestMealDate(new Date(),flag)); //database search
-
-
-	query.find({
-	  success: function(results) {
-		// Do something with the returned Parse.Object values
-		var object = results[0];
-		if (!object) return;
-		for(var i = 1; i<6; i++){
-			var temps = object.get("Yemek"+i);
-			menuObj["TR"+i] = temps.split("/")[0];
-			menuObj["ENG"+i] = temps.split("/")[1];
-		}
-		var dil = document.getElementById("dil").innerHTML;
-		if(!flag) menuObj2 = JSON.parse(JSON.stringify(menuObj));
-		if(dil[0] == "T"){
-			printMenu(menuObj,"TR",flag);
-		}
-		else
-			printMenu(menuObj,"ENG",flag);
-		
-	  },
-	  error: function(error) {
-		alert("Error : No internet Connection!");
-	  }
-	});*/
 	if(localStorage["ncc-cafeteria"]){
 		DB_mirror = JSON.parse(localStorage["ncc-cafeteria"]);
 		today = new Date();
@@ -56,7 +28,7 @@ function closestMenu(flag){
 					menuObj["TR"+k] = temps.split("/")[0];
 					menuObj["ENG"+k] = temps.split("/")[1];
 				}
-				var dil = document.getElementById("dil").innerHTML;
+				var dil = document.getElementById("nav6").innerHTML;
 				if(!flag) menuObj2 = JSON.parse(JSON.stringify(menuObj));
 				if(dil[0] == "T"){
 					printMenu(menuObj,"TR",flag);
@@ -68,15 +40,9 @@ function closestMenu(flag){
 			}
 		}
 	}
-	else if(!flag){
-		var win = window.open("welcome.html");   
-		var timer = setInterval(function() {   
-			if(win.closed) {  
-				clearInterval(timer); 
-				update();
-				return;
-			}  
-		}, 1000); 
+	else if(!flag && localStorage["ncc-cafeteria-first"] == "true"){
+		window.open("welcome.html");
+		localStorage["ncc-cafeteria-first"] = false; 
 	}	
 }
 
@@ -123,7 +89,7 @@ function closestMealDate(c,p){
 
 function printMenu(menuObj,dil, flag){
 	var type;
-	if (closestMealDate(new Date(),flag).slice(-1) == "o"){
+	if (closestMealDate(new Date(),flag).slice(-1) == "L"){
 		if(dil == "TR") type = "Öğle Yemeği"
 		else type = "Lunch";
 		if(!flag)
@@ -150,16 +116,22 @@ function printMenu(menuObj,dil, flag){
 }
 
 function changeLanguage(t){
-	if (t.innerHTML == "Türkçe"){
-		t.innerHTML = "English";
+	if (t.innerHTML == "DİLİ DEĞİŞTİR"){
+		
 		printMenu(menuObj2,"ENG");
 		printMenu(menuObj,"ENG",1);
+		for(var i = 0; i<strEn.length; i+=2){
+			document.getElementById(strEn[i]).innerHTML = strEn[i+1];
+		}
 		return;
 	}
 	else{
-		t.innerHTML = "Türkçe";
+		
 		printMenu(menuObj2,"TR");
 		printMenu(menuObj,"TR",1);
+		for(var i = 0; i<strTR.length; i+=2){
+			document.getElementById(strTR[i]).innerHTML = strTR[i+1];
+		}
 		return 0;
 	}
 }
@@ -179,11 +151,17 @@ function update(x){
 				closestMenu();
 				closestMenu(1);}
 		}
+			if(x){
+			window.open("index.html");
+			}
 		else
 			alert("Update error occurred!");		
 	},
 	error: function(error){
 		alert("Please connect internet first"); 
+		if(x){
+			window.open("index.html");
+			}
 	}});
 }
 
@@ -192,8 +170,9 @@ function update(x){
 
 
 
-
-
+function makeCall(p){
+	window.open(p);
+}
 
 
 

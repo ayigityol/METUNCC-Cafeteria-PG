@@ -5,7 +5,7 @@
 	<!-- Application main javascript content -->
 	<script src="js/main.js"></script>
 	<!-- Call of  main functions -->
-	
+	<script src= "js/string.js"></script>
 
 <head>
     <meta charset="utf-8">
@@ -39,7 +39,7 @@
 <body id="page-top" class="index">
 
     <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top" style="background-color:rgba(139,0,0,0.5);">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
@@ -49,33 +49,27 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#page-top">Home</a>
+                <a class="navbar-brand" href="#page-top" id="home">Home</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
+                    <li class="page-scroll">
+                        <a href="#portfolio" id = "nav1">Current Meal</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#portfolio">Current Meal</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#about">Next Meal</a>
+                        <a href="#about" id = "nav2">Next Meal</a>
                     </li>
 					<li class="page-scroll">
-						<a herf="#phone">Phone Numbers</a>
+						<a herf="#phone" id = "nav3">Phone Numbers</a>
 					</li>
-                    <!--<li class="page-scroll">
-                        <a href="#contact">Get Full Month</a>
-                    </li>-->
-					<li class="page-scroll">
-                        <a href="#deep">Developer Details</a>
-					<li class="page-scroll">
-                        <a href="#" onClick = "update();">Update Menu</a>
-					<li class="page-scroll"> 
-						<a herf="#" id = "dil" onclick="changeLanguage(this);">Türkçe</a>
+					<li class="page-scroll" >
+                        <a href="#deep" id = "nav4">Developer Details</a>
+					<li class="page-scroll" >
+                        <a href="#" onClick = "update();" id = "nav5">Update Menu</a>
+					<li class="page-scroll" > 
+						<a id = "nav6"  onclick="changeLanguage(this);" >Change Language</a>
                     </li>
                 </ul>
             </div>
@@ -91,10 +85,11 @@
                 <div class="col-lg-12">
                     <img class="img-responsive" src="img/profile.png" alt="">
                     <div class="intro-text">
-                        <span class="name"> Welcome</span>
+                        <span class="name" id="welcome"> Welcome</span>
                         <hr class="star-light">
-                        <span class="skills">METU NCC Cafeteria App<br>Have a nice meal !<br><br><br></span>
-						<br><br><br><br><br><br><br><br><br><br><br><br>
+                        <span class="skills" id="appname">METU NCC Cafeteria App</span><br>
+						<span class="skills" id="message">Have a nice meal !<br><br><br></span>
+						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> <br><br><br><br><br><br><br>
 					</div>
                 </div>
             </div>
@@ -102,11 +97,11 @@
     </header>
 
     <!-- Portfolio Grid Section -->
-    <section id="portfolio">
+    <section id="portfolio" style="background-image: url(img/bg.png);">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Today's Meal</h2>
+                    <h2 id="title1">Today's Meal</h2>
                     <hr class="star-primary">
                 </div>
             </div>
@@ -119,7 +114,7 @@
 					Check your internet connection !
 					</div>
 					<div>
-					<br><br><br><br><br><br><br><br><br><br><br><br><br>
+					<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> <br><br><br><br><br><br><br><br><br>
 					</div>
 					<div>
                 </div>
@@ -128,11 +123,11 @@
     </section>
 
     <!-- About Section -->
-    <section class="success" id="about">
+    <section class="success" id="about" style="background-image: url(img/bg.png);">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Next Meal</h2>
+                    <h2  id="title2">Next Meal</h2>
                     <hr class="star-light">
                 </div>
             </div>
@@ -140,7 +135,7 @@
                 <div class="col-lg-12 text-center"  >
                 <div id="nextMenuTitle" id=""> </div>
 				<div id="nextMenuItems" id="nextMenuItems">Check your internet connection ! </div>
-				<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+				<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> <br><br><br><br><br><br>
 
 				</div>
             </div>
@@ -148,7 +143,30 @@
     </section>
 
     <!-- Contact Section -->
-    
+		
+	<section id="phone" style="background-image: url(img/bg.png);">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 text-center">
+						<h2 id="title3">Phones</h2>
+						<hr class="star-primary">
+						<button value="tel:+905338308558" onclick="makeCall(this.value);">Boğaç Tantuni</button><br><br>
+						<button value="tel:+905338206849" onclick="makeCall(this.value);"> Cafe Days</button><br><br>
+						<button value="tel:+905338643695" onclick="makeCall(this.value);"> Donatello Pizza</button><br><br>
+						<button value="tel:+905338719005" onclick="makeCall(this.value);"> Jasmine Cafe </button><br><br>
+						<button value="tel:+905338363818" onclick="makeCall(this.value);"> Sandwich Dünyası</button><br><br>
+						<button value="tel:+905338750075" onclick="makeCall(this.value);"> Lavish Restaurant</button><br><br>
+					</div>
+				</div>
+						<div>
+						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> <br><br><br><br><br><br>
+						</div>
+						<div>
+					</div>
+				</div>
+			</div>
+		</section>
+
 
     <!-- Footer -->
     <footer id = "deep" class="text-center">
@@ -177,7 +195,6 @@
                         </ul>
                     </div>
                     <div class="footer-col center-md-4">
-						<br><br><br><br><br><br><br><br><br><br><br><br>
                         <h3>About Developer</h3>
                         <p>Ahmet Yiğit YOL<br>2014<br>METU NCC </p>
                     </div>
@@ -190,7 +207,7 @@
                     <div class="col-lg-12">
                         Thank you for your support.
                     </div>
-                </div>
+                </div><br><br><br><br><br><br><br><br><br><br><br><br> <br><br><br><br><br><br><br><br><br><br><br><br> 
             </div>
         </div>
     </footer>
